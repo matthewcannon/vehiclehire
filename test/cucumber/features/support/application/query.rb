@@ -1,0 +1,2 @@
+class WhatDoIHave
+end
