@@ -1,20 +1,15 @@
 module Task
-  class AddUser
-    def execute(username, password)
-      user = User.new(username, password)
-      command = Command::AddUser.new(user)
-      command_handler = CommandHandlerFactory.new().for_add_user()
+  class AddSpecialOffer
+    def execute(special_offer)
+      command = Command::AddSpecialOffer.new(special_offer)
+      command_handler = CommandHandlerFactory.new().for_add_special_offer()
       command_handler.handle(command)
     end
   end
 
-  class LoginAsUser
-    def execute()
-      user = Context.get_the_user()
-      command = Command::LoginUser.new(user)
-      command_handler = CommandHandlerFactory.new().for_login_user()
-      command_handler.handle(command);
-    end
+  class Enquire
+	  def execute(enquiry)
+	  end
   end
 
   class IdentifyWhatIHave

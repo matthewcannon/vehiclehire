@@ -1,17 +1,11 @@
-class LoginUserWeb
+class AddSpecialOfferWeb
   def initialize(session)
     @session = session
   end
 
-  def handle(login_user)
-    user = login_user.user
+  def handle(add_special_offer)
+    special_offer = add_special_offer.special_offer
 
-    @session.visit('/Login/Index.mvc')
-    @session.fill_in('Username', :with => user.user_name)
-    @session.fill_in('Password', :with => user.password)
-    @session.fill_in('ExtensionNumber', :with => '0000')
-    @session.select('00', :from => 'ShiftEndTimeHours')
-    @session.select('00', :from => 'ShiftEndTimeMinutes')
-    @session.click_button('Login')
+    #@session.visit('/Login/Index.mvc')
   end
 end

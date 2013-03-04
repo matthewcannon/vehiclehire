@@ -1,11 +1,10 @@
-Given /^a special offer of (\d+) for (\d+) for an expensive suv$/ do |arg1, arg2|
-  #pending
+Given /^a special offer on luxury suvs$/ do
+	special_offer_on_luxury_suvs = SpecialOffer.new(LuxurySuv.new())
+	Task::AddSpecialOffer.new().execute(special_offer_on_luxury_suvs)
 end
 
 When /^i select special offers$/ do
-  #pending
 end
 
-Then /^i am notified that the (\d+) for (\d+) special offer has been automatically selected$/ do |arg1, arg2|
-  #pending
+Then /^i am notified that the special offer has been automatically selected$/ do
 end

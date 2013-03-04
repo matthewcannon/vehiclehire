@@ -1,17 +1,9 @@
 module Command
-  class LoginUser
-    attr_reader :user
+  class AddSpecialOffer
+    attr_reader :special_offer
 
-    def initialize(user)
-      @user = user
-    end
-  end
-
-  class AddUser
-    attr_reader :user
-
-    def initialize(user)
-      @user = user
+    def initialize(special_offer)
+      @special_offer = special_offer
     end
   end
 end

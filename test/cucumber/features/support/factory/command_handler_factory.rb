@@ -3,12 +3,8 @@ class CommandHandlerFactory
     @session = Session.current
   end
 
-  def for_add_user
-    AddUserDefaultCommandHandler.new()
-  end
-
-  def for_login_user
-    LoginUserWeb.new(@session)
+  def for_add_special_offer
+    AddSpecialOfferWeb.new(@session)
   end
 end
 

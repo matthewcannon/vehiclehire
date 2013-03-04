@@ -1,8 +1,15 @@
-class User
-  attr_accessor :user_name, :password
+class SpecialOffer
+	def initialize(vehicle_class)
+	end
+end
 
-  def initialize(user_name, password)
-    @user_name = user_name
-    @password = password
-  end
+class BudgetSuv
+end
+
+class LuxurySuv
+end
+
+class Enquiry
+	def initialize(vehicle_class)
+	end
 end
