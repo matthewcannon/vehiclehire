@@ -1,19 +1,14 @@
 Feature: automatically select a special offer
 
-	as a booker
+	as an agent
 	i want to be notified when a special offer is automatically selected
-	so that i can advise the caller
+	so that i can advise the customer 
 
-	#Scenario: enquiry for a vehicle in the same class as the special offer
+	Scenario: enquiry has one applicable special offer
 
-		#Given a 3 for 2 special offer on expensive suvs
-		#And an enquiry for an inexpensive suv for 2 days
-		#When i select special offers
-		#Then i am notified that the 3 for 2 special offer has been automatically selected
-	
-	Scenario: enquiry for a vehicle in the same class as the special offer
+		# an enquiry has an applicable special offer when the vehicle class matches
 
 		Given a special offer on luxury suvs
-		And i am enquiring for budget suvs
-		When i select special offers
+		And an enquiry for budget suvs
+		When special offers are requested for the enquiry
 		Then i am notified that the special offer has been automatically selected
