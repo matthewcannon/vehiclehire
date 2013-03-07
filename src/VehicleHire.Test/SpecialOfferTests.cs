@@ -5,10 +5,10 @@ namespace VehicleHire.Test
     [TestFixture]
     public class enquiry_has_one_applicable_special_offer : IAgent
     {
-        private Notification _notification;
+        private SpecialOfferAppliesToEnquiry _specialOfferAppliesToEnquiry;
 
         [Test]
-        public void i_am_notified()
+        public void i_am_notified_that_a_special_offer_applies()
         {
             var specialOffer = new SpecialOffer(new LuxurySuv());
 
@@ -17,36 +17,12 @@ namespace VehicleHire.Test
 
             new GetSpecialOffers().For(enquiry);
 
-            Assert.That(_notification, Is.Not.Null);
+            Assert.That(_specialOfferAppliesToEnquiry, Is.Not.Null);
         }
 
-        public void Handle(Notification notification)
+        public void Handle(SpecialOfferAppliesToEnquiry specialOfferAppliesToEnquiry)
         {
-            _notification = notification;
-        }
-    }
-
-    [TestFixture]
-    public class enquiry_has_no_applicable_special_offers : IAgent
-    {
-        private Notification _notification;
-
-        [Test]
-        public void i_am_not_notified()
-        {
-            var specialOffer = new SpecialOffer(new LuxurySuv());
-
-            var agent = this;
-            var enquiry = new Enquiry(agent, new BudgetSuv());
-
-            new GetSpecialOffers().For(enquiry);
-
-            Assert.That(_notification, Is.Null);
-        }
-
-        public void Handle(Notification notification)
-        {
-            _notification = notification;
+            _specialOfferAppliesToEnquiry = specialOfferAppliesToEnquiry;
         }
     }
 
@@ -78,14 +54,14 @@ namespace VehicleHire.Test
 
     public interface IAgent
     {
-        void Handle(Notification notification);
+        void Handle(SpecialOfferAppliesToEnquiry specialOfferAppliesToEnquiry);
     }
 
     public class GetSpecialOffers
     {
         public void For(Enquiry enquiry)
         {
-            enquiry.Handle(new SpecialOfferFound());
+            //enquiry.Handle(new SpecialOfferFound());
         }
     }
 
@@ -110,11 +86,17 @@ namespace VehicleHire.Test
 
         public void Handle(SpecialOfferFound specialOfferFound)
         {
-            _agent.Handle(new Notification());
+            _agent.Handle(new SpecialOfferAppliesToEnquiry(this));
         }
     }
 
-    public class Notification
+    public class SpecialOfferAppliesToEnquiry
     {
+        readonly Enquiry _enquiry;
+
+        public SpecialOfferAppliesToEnquiry(Enquiry enquiry)
+        {
+            _enquiry = enquiry;
+        }
     }
 }
