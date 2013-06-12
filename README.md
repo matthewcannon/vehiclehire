@@ -1,5 +1,6 @@
 vehiclehire
 ===========
-an mvc 4 application which emphasises: -
+an mvc 4 application to explore: -
  * domain-driven design
  * cqrs
+ * specification by example
